@@ -4,6 +4,8 @@ frontend:
     preBuild:
       commands:
         - corepack enable
+        - corepack prepare pnpm@latest-9 --activate
+        - pnpm config set store-dir .pnpm-store
         - pnpm install
     build:
       commands:
@@ -14,4 +16,5 @@ frontend:
       - '**/*'
   cache:
     paths:
+      - .pnpm-store/**/*
       - node_modules/**/*
